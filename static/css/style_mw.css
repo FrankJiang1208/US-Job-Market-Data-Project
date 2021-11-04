@@ -1,0 +1,71 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-color: #B5BDC7;
+}
+
+#map,
+body,
+html {
+height: 100%;
+}
+
+.row {
+padding: 6px !important;
+}
+
+.well {
+border-color: #EF9541;
+background-color: #EFEFED;
+}
+
+.panel {
+border-color: #EF9541;
+}
+
+.panel-title {
+color: black;
+}
+
+.panel-body {
+background-color: #EFEFED;
+padding-bottom: 51px;
+}
+
+mark.green {
+color:#098a1e;
+background: none;
+}
+
+mark.red {
+color:#ff0000;
+background: none;
+}
+
+.chartContainer {
+width: 100%;
+border:1.5px solid #EF9541;
+border-radius: 5px;
+box-sizing: border-box;
+float: left;
+height: 825px;
+}
+
+.pos-f-t {
+display: none;
+}
+
+.navbar {
+margin-bottom: 0px !important;
+z-index: 10000 !important;
+}
+
+@media (max-width: 1200px) {
+    .navbar-expand-lg {
+        visibility: hidden;
+        display:none;
+    }
+    .pos-f-t {
+        visibility:visible;
+    }
+}  
