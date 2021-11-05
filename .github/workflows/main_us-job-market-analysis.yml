@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'US-Job-Market-Analysis'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_148D09A578B34B3E9105A85618769085 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D44E2DF90FE54B9BA434A6FB4247F659 }}
