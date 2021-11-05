@@ -1,11 +1,11 @@
 from flask import Flask, render_template, redirect
-# import pyodbc
-# server = 'jobtesting.database.windows.net' 
-# database = 'JobMarketData' 
-# username = 'jiangshan9678' 
-# password = 'Frank1208!' 
-# cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
-# cursor = cnxn.cursor()
+import pyodbc
+server = 'jobtesting.database.windows.net' 
+database = 'JobMarketData' 
+username = 'jiangshan9678' 
+password = 'Frank1208!' 
+cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
+cursor = cnxn.cursor()
 app = Flask(__name__)
 
 @app.route("/")
