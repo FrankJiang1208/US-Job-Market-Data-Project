@@ -6,7 +6,7 @@ from flask import Flask, render_template, redirect
 # password = 'Frank1208!' 
 # cnxn = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+';DATABASE='+database+';UID='+username+';PWD='+ password)
 # cursor = cnxn.cursor()
-# app = Flask(__name__)
+app = Flask(__name__)
 
 @app.route("/")
 def index():
