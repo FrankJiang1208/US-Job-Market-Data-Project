@@ -2,19 +2,8 @@ from flask import Flask, render_template, redirect
 from flask import request
 import pandas as pd
 import numpy as np
-import re
-from nltk.corpus import stopwords
-import matplotlib.pyplot as plt
-from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import FeatureUnion
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix
-import joblib
+import pickle
+
 
 class TextSelector(BaseEstimator, TransformerMixin):
     """
@@ -72,8 +61,11 @@ def skill_check(dict):
         if (i in skill_dict.keys()):
             skill_dict[i]=1
     return skill_dict
+# Use pickle to load in the pre-trained model.
+with open(f'salary_predict_model.pkl', 'rb') as f:
 
-model= joblib.load(open("salary_predict_model.pkl", "rb"))
+    model = pickle.load(f)
+
 
 app = Flask(__name__)
 
