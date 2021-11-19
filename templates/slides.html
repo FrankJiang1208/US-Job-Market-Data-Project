@@ -38,7 +38,7 @@
                                 <li><a class="dropdown-item" href="{{ url_for('sa') }}">Salary by Jobs in California</a></li>
                                 <li><a class="dropdown-item" href="{{ url_for('ei') }}">Occupation Choropleth</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Machine Learning--Coming soon</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('sp') }}">ML-Salary Prediction</a></li>
                               </ul>
                             </li>
                       <li class="nav-item">
@@ -68,7 +68,7 @@
                                 <li><a class="dropdown-item" href="{{ url_for('sa') }}">Salary by Jobs in California</a></li>
                                 <li><a class="dropdown-item" href="{{ url_for('ei') }}">Occupation Choropleth</a></li>
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Machine Learning--coming soon</a></li>
+                                <li><a class="dropdown-item" href="{{ url_for('sp') }}">ML-Salary Prediction</a></li>
                               </ul>
                             </li>
                       <li class="nav-item">
@@ -182,6 +182,25 @@
                
             </div>
         </div>
+        <footer class="footer bg-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
+                        <ul class="list-inline mb-2">
+                            <li class="list-inline-item"><a href="https://github.com/mriganv/Project-3/blob/main/README.md">About</a></li>
+                        </ul>
+                        <p class="text-muted small mb-4 mb-lg-0">&copy; UCI-DATA-BOOTCAMP PROJECT 3.</p>
+                    </div>
+                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
+                        <ul class="list-inline mb-0">
+                            <li class="list-inline-item me-4">
+                                <a href="https://github.com/mriganv/Project-3"><i class="bi-github fs-3"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
         <script src="/static/js/cpj_data.js"></script>
         <script src="/static/js/cpj_scripts.js"></script>
         <script src="/static/js/data.js"></script>
@@ -202,4 +221,5 @@
             })
         </script>
     </body>
+
 </html>

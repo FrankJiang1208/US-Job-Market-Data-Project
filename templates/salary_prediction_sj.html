@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    form {
+        margin: auto;
+        width: 35%;
+    }
+    </style>
+<head>
+
+  <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='assets/favicon.ico') }}" />
+  <!-- Bootstrap icons-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href= "../static/css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+
+<body>
+ <!-- Navigation-->
+                   <!-- Navigation-->
+        
+                   <nav class="navbar navbar-expand-lg navbar-expand-md navbar-light bg-light justify-content-between">
+                    <a  class="navbar-brand font-weight-bold" href="/" style="padding-left: 100px;" >US Employment Data Analysis</a>
+                    <form class="form-inline" style="padding-right: 100px;">
+                        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Data Visualization
+                                      </a>
+                                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{ url_for('slides') }}">Job Opening Data Visualization</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('jc') }}">Job Market</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('jm') }}">Jobs by Category</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('sa') }}">Salary by Jobs in California</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('ei') }}">Occupation Choropleth</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('sp') }}">ML-Salary Prediction</a></li>
+                                      </ul>
+                                    </li>
+                              <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('ei') }}"></a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link active" href="https://github.com/mriganv/Project-3/tree/main/MAIN/static/resources">Data</a>
+                              </li>
+        
+                            </ul>
+                          </div>
+                       </form>
+                  </nav>
+                  <div class="pos-f-t">
+                        
+                    <div class="collapse" id="navbarToggleExternalContent">
+                        <div class="bg-light p-4">
+                            <ul class="navbar-nav">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Options
+                                      </a>
+                                      <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <li><a class="dropdown-item" href="{{ url_for('sp') }}">ML-Salary Prediction</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('slides') }}">Graph</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('jc') }}">Job Market</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('jm') }}">Jobs by Category</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('sa') }}">Salary by Jobs in California</a></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('ei') }}">Occupation Choropleth</a></li>
+                                        <li><hr class="dropdown-divider"></li>
+                                        <li><a class="dropdown-item" href="{{ url_for('sp') }}">ML-Salary Prediction</a></li>
+                                      </ul>
+                                    </li>
+                              <li class="nav-item">
+                                <a class="nav-link active" href="{{ url_for('ei') }}"></a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link active" href="https://github.com/mriganv/Project-3/tree/main/MAIN/static/resources">Data</a>
+                              </li>
+        
+                            </ul>
+                        </div>
+                      </div>
+                      <nav class="navbar navbar-light bg-light">
+                        <div class="container-fluid">
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+                        </div>
+                      </nav>
+                  </div>
+
+    <form action="{{ url_for('sp') }}" method="POST">
+      <fieldset>
+          <legend>Input values:</legend>
+          <div class="well">
+          <h5>Job Title</h5>
+          <select name="titles" id="selDataset1"></select>
+          </div>
+          <div class="well">
+            <h5>State</h5>
+            <select name="state" id="selDataset2"></select>
+          </div>
+          <div class="well">
+            <h5>Job Sector</h5>
+            <select name="sector" id="selDataset3"></select>
+            </div>
+            <div class="well">
+              <h5>Job Industry</h5>
+              <select name="industry" id="selDataset4"></select>
+              </div>
+          <div class="well">
+            <h5>Company Ownership</h5>
+            <select name="ownership" id="selDataset5"></select>
+            </div>
+            <div class="well">
+              <h5>Job Seniority</h5>
+              <select name="seniority" id="selDataset6"></select>
+              </div>
+          Company Size:
+          <input name="size"  type="number" required>
+          <br>
+          <br> Company Age:
+          <input name="age"   type="number" required>
+          <br>
+          <br>
+
+
+          <div class="checkbox-block">
+            <!--checkbox 1-->
+          <input class="checkbox-effect checkbox-effect-1" id="Python" type="checkbox" value="Python" name="Python"/>
+          <label for="Python">Python</label>
+          
+          <!--checkbox 2-->
+          <input class="checkbox-effect checkbox-effect-1" id="R" type="checkbox" value="R" name="R"/>
+          <label for="R">R</label>
+
+          <input class="checkbox-effect checkbox-effect-1" id="SQL" type="checkbox" value="SQL" name="SQL"/>
+          <label for="SQL">SQL</label>
+          </div>
+
+
+          <div class="checkbox-block">
+            <!--checkbox 1-->
+          <input class="checkbox-effect checkbox-effect-1" id="AWS" type="checkbox" value="AWS" name="AWS"/>
+          <label for="AWS">AWS</label>
+          
+          <!--checkbox 2-->
+          <input class="checkbox-effect checkbox-effect-1" id="Excel" type="checkbox" value="Excel" name="Excel"/>
+          <label for="Excel">Excel</label>
+
+          <input class="checkbox-effect checkbox-effect-1" id="GCP" type="checkbox" value="GCP" name="GCP"/>
+          <label for="GCP">GCP</label>
+          </div>
+
+          <div class="checkbox-block">
+            <!--checkbox 1-->
+          <input class="checkbox-effect checkbox-effect-1" id="Azure" type="checkbox" value="Azure" name="Azure"/>
+          <label for="Azure">Azure</label>
+          
+          <!--checkbox 2-->
+          <input class="checkbox-effect checkbox-effect-1" id="Spark" type="checkbox" value="Spark" name="Spark"/>
+          <label for="Spark">Spark</label>
+
+          <input class="checkbox-effect checkbox-effect-1" id="PyTorch" type="checkbox" value="PyTorch" name="PyTorch"/>
+          <label for="PyTorch">PyTorch</label>
+          </div>
+
+          <div class="checkbox-block">
+            <!--checkbox 1-->
+            <input class="checkbox-effect checkbox-effect-1" id="NoSQL" type="checkbox" value="NoSQL" name="NoSQL"/>
+          <label for="NoSQL">NoSQL</label>
+          
+          <!--checkbox 2-->
+          <input class="checkbox-effect checkbox-effect-1" id="TensorFlow" type="checkbox" value="TensorFlow" name="TensorFlow"/>
+          <label for="TensorFlow">TensorFlow</label>
+
+          <input class="checkbox-effect checkbox-effect-1" id="Tableau" type="checkbox" value="Tableau" name="Tableau"/>
+          <label for="Tableau">Tableau</label>
+          </div>
+
+          <div class="checkbox-block">
+            <!--checkbox 1-->
+            <input class="checkbox-effect checkbox-effect-1" id="Scikit_Learn" type="checkbox" value="Keras" name="Keras"/>
+            <label for="Keras">Keras</label>
+          
+          <!--checkbox 2-->
+          <input class="checkbox-effect checkbox-effect-1" id="Scikit_Learn" type="checkbox" value="Scikit-Learn" name="Scikit_Learn"/>
+          <label for="Scikit_Learn">Scikit Learn</label>
+
+          <input class="checkbox-effect checkbox-effect-1" id="ml" type="checkbox" value="Machine_Learning" name="ml"/>
+          <label for="ml">Machine Learning</label>
+          </div>
+
+          <div class="checkbox-block">
+            <!--checkbox 1-->
+          <input class="checkbox-effect checkbox-effect-1" id="Hadoop" type="checkbox" value="Hadoop" name="Hadoop"/>
+          <label for="Hadoop">Hadoop</label>
+          
+          <!--checkbox 2-->
+          <input class="checkbox-effect checkbox-effect-1" id="Scala" type="checkbox" value="Scala" name="Scala"/>
+          <label for="Scala">Scala</label>
+
+          <input class="checkbox-effect checkbox-effect-1" id="DataBrick" type="checkbox" value="Data_Brick" name="DataBrick"/>
+          <label for="DataBrick">DataBrick</label>
+          </div>
+          <input id="submit" type="submit">
+      </fieldset>
+  </form>
+  <div class="result" align="center">
+    {{pred}}
+  </div>
+    <!-- D3 JavaScript -->
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="../static/js/ml_sj.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  
+</body>
+</html>

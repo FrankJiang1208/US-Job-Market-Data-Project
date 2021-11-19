@@ -1,3 +1,9 @@
 flask
 boto3
-pyodbc
+pandas
+pickle
+nltk
+numpy
+re
+sklearn
+matplotlib

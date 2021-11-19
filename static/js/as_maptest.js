@@ -1,5 +1,5 @@
 
-geoData = "../static/resources/geojsons/newtest.geojson"
+geoData = "../static/resources/geojsons/datachoropleth.geojson"
    
     
   let geojson;
@@ -18,7 +18,7 @@ geoData = "../static/resources/geojsons/newtest.geojson"
         })
         .addTo(myMap);
     const bigboi = data.features
-    keys=Object.keys(bigboi[0].properties.jobs['Job characteristic code'])
+    keys=Object.keys(bigboi[0].properties.jobs['Code'])
     dropdown=d3.select("#selDataset");
 
     for (i=0;i<keys.length;i++) {
@@ -40,13 +40,13 @@ geoData = "../static/resources/geojsons/newtest.geojson"
       .addTo(myMap1);
     
     
-      geoData = "../static/resources/geojsons/newtest.geojson"
-
+      geoData = "../static/resources/geojsons/datachoropleth.geojson"
+  
     // Create a new choropleth layer.
     geojson = L.choropleth(data, {
 
     // Define which property in the features to use.
-    valueProperty: "Accountants and auditors",
+    valueProperty: "Business Intelligence Developer",
 
     // Set the color scale.
     scale: ["#5ba3ff", "#301934"],
@@ -65,11 +65,11 @@ geoData = "../static/resources/geojsons/newtest.geojson"
 
     // Binding a popup to each layer
     onEachFeature: function(feature, layer) {
-      if( feature.properties["Accountants and auditors"]!== undefined){
+      if( feature.properties["Business Intelligence Developer"]!== undefined){
           layer.bindPopup(feature.properties.name + "<br><hr>Number of Jobs: " +
-          feature.properties["Accountants and auditors"]);
+          feature.properties["Business Intelligence Developer"]);
       }else{
-        console.log(feature.properties["Accountants and auditors"])
+        console.log(feature.properties["Business Intelligence Developer"])
         layer.bindPopup(feature.properties.name + "<br><hr>Number of Jobs: 0");
       }
     }
@@ -107,6 +107,7 @@ geoData = "../static/resources/geojsons/newtest.geojson"
     }
 
     init();
+
     d3.selectAll("#selDataset").on("change", getData);
 
 
@@ -126,8 +127,7 @@ geoData = "../static/resources/geojsons/newtest.geojson"
         .addTo(myMap1);
       let v=dropdown.property('value');
       
-      
-        geoData = "../static/resources/geojsons/newtest.geojson"
+        geoData = "../static/resources/geojsons/datachoropleth.geojson"
 
       // Create a new choropleth layer.
       geojson = L.choropleth(data, {

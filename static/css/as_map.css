@@ -1,24 +1,20 @@
 body {
   padding: 0;
   margin: 0;
-  background-color: #B5BDC7;  
 }
 
 #map,
 body,
 html {
-  height:100%;
-  overflow-y:hidden;
+  height: 100%;
 }
-
 
 .leaflet-popup-content {
   text-align: center;
 }
 
 /* CSS from the leaflet-choropleth documentation */
-.legend,
-.info {
+.legend {
   color: #555;
   padding: 6px 8px;
   font: 12px Arial, Helvetica, sans-serif;
@@ -27,25 +23,17 @@ html {
   background: rgba(255,255,255,0.8);
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   border-radius: 5px;
-  position:relative;
-  bottom: 30%;
-
-  
 }
 .legend ul {
   list-style-type: none;
   padding: 0;
   margin: 0;
   clear: both;
-  font-size: small;
-  position:relative;
-  bottom: 30%;
 }
 .legend li {
   display: inline-block;
   width: 30px;
   height: 22px;
-  font-size: small;
 }
 .legend .min {
   float: left;
@@ -53,5 +41,8 @@ html {
 }
 .legend .max {
   float: right;
-  padding-bottom: 5px;
+}
+
+h1 {
+  text-align: center;
 }
