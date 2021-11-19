@@ -14,8 +14,7 @@ from sklearn.pipeline import FeatureUnion
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix
-import pickle
-
+import joblib
 
 class TextSelector(BaseEstimator, TransformerMixin):
     """
@@ -73,11 +72,8 @@ def skill_check(dict):
         if (i in skill_dict.keys()):
             skill_dict[i]=1
     return skill_dict
-# Use pickle to load in the pre-trained model.
-with open(f'salary_predict_model.pkl', 'rb') as f:
 
-    model = pickle.load(f)
-
+model= joblib.load(open("salary_predict_model.pkl", "rb"))
 
 app = Flask(__name__)
 

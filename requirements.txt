@@ -3,5 +3,6 @@ boto3
 pandas
 nltk
 numpy
+joblib
 sklearn
 matplotlib
