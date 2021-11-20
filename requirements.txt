@@ -4,3 +4,5 @@ pandas
 nltk
 numpy
 matplotlib
+nltk
+sklearn
