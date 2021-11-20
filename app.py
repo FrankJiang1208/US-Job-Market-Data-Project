@@ -12,30 +12,9 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import FeatureUnion
 from sklearn.ensemble import RandomForestClassifier
 from nltk.corpus import stopwords
-from imports import TextSelector,NumberSelector
+from importing import TextSelector,NumberSelector
 import joblib
 
-class TextSelector(BaseEstimator, TransformerMixin):
-
-        def __init__(self, key):
-            self.key = key
-
-        def fit(self, X, y=None):
-            return self
-
-        def transform(self, X):
-            return X[self.key]
-    
-class NumberSelector(BaseEstimator, TransformerMixin):
-    
-        def __init__(self, key):
-            self.key = key
-
-        def fit(self, X, y=None):
-            return self
-
-        def transform(self, X):
-            return X[[self.key]]
 def salary_category(bin):
 
     if bin==1:
