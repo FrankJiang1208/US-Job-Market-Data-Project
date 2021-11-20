@@ -44,7 +44,7 @@ def skill_check(dict):
             skill_dict[i]=1
     return skill_dict
 
-model = joblib.load('salary_predict_model.pkl')
+model = joblib.load('salary_predict_model.h5')
 
 
 class TextSelector(BaseEstimator, TransformerMixin):
