@@ -48,7 +48,28 @@ with open(f'salary_predict_model.pkl', 'rb') as f:
 
     model = pickle.load(f)
 
+def index():
+    class TextSelector(BaseEstimator, TransformerMixin):
 
+        def __init__(self, key):
+            self.key = key
+
+        def fit(self, X, y=None):
+            return self
+
+        def transform(self, X):
+            return X[self.key]
+    
+    class NumberSelector(BaseEstimator, TransformerMixin):
+    
+        def __init__(self, key):
+            self.key = key
+
+        def fit(self, X, y=None):
+            return self
+
+        def transform(self, X):
+            return X[[self.key]]
 app = Flask(__name__)
 
 @app.route("/")
