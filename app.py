@@ -3,6 +3,7 @@ from flask import request
 import pandas as pd
 import numpy as np
 import pickle
+from nltk.corpus import stopwords
 from sklearn.base import BaseEstimator, TransformerMixin
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
@@ -10,8 +11,6 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import StandardScaler
 from sklearn.pipeline import FeatureUnion
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix
 from nltk.corpus import stopwords
 
 
