@@ -13,6 +13,7 @@ from sklearn.pipeline import FeatureUnion
 from sklearn.ensemble import RandomForestClassifier
 from nltk.corpus import stopwords
 from imports import TextSelector,NumberSelector
+import joblib
 
 class TextSelector(BaseEstimator, TransformerMixin):
 
@@ -63,10 +64,8 @@ def skill_check(dict):
         if (i in skill_dict.keys()):
             skill_dict[i]=1
     return skill_dict
-# Use pickle to load in the pre-trained model.
-with open(f'salary_predict_model.pkl', 'rb') as f:
 
-    model = pickle.load(f)
+model = joblib.load('salary_predict_model.pkl')
 
 
 class TextSelector(BaseEstimator, TransformerMixin):
