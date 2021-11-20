@@ -14,7 +14,27 @@ from sklearn.ensemble import RandomForestClassifier
 from nltk.corpus import stopwords
 from imports import TextSelector,NumberSelector
 
+class TextSelector(BaseEstimator, TransformerMixin):
 
+        def __init__(self, key):
+            self.key = key
+
+        def fit(self, X, y=None):
+            return self
+
+        def transform(self, X):
+            return X[self.key]
+    
+class NumberSelector(BaseEstimator, TransformerMixin):
+    
+        def __init__(self, key):
+            self.key = key
+
+        def fit(self, X, y=None):
+            return self
+
+        def transform(self, X):
+            return X[[self.key]]
 def salary_category(bin):
 
     if bin==1:
@@ -48,8 +68,8 @@ with open(f'salary_predict_model.pkl', 'rb') as f:
 
     model = pickle.load(f)
 
-def index():
-    class TextSelector(BaseEstimator, TransformerMixin):
+
+class TextSelector(BaseEstimator, TransformerMixin):
 
         def __init__(self, key):
             self.key = key
@@ -60,7 +80,7 @@ def index():
         def transform(self, X):
             return X[self.key]
     
-    class NumberSelector(BaseEstimator, TransformerMixin):
+class NumberSelector(BaseEstimator, TransformerMixin):
     
         def __init__(self, key):
             self.key = key
@@ -74,27 +94,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    class TextSelector(BaseEstimator, TransformerMixin):
-
-        def __init__(self, key):
-            self.key = key
-
-        def fit(self, X, y=None):
-            return self
-
-        def transform(self, X):
-            return X[self.key]
     
-    class NumberSelector(BaseEstimator, TransformerMixin):
-    
-        def __init__(self, key):
-            self.key = key
-
-        def fit(self, X, y=None):
-            return self
-
-        def transform(self, X):
-            return X[[self.key]]
     listings = {'_id':'615f3911a6d569a7cd86c945',
  'url': 'https://www.cnbc.com/2021/10/04/here-are-the-five-most-valuable-college-majors-.html',
  'img': 'https://image.cnbcfm.com/api/v1/image/106885838-1621509859148-gettyimages-1318999756-vcg111330726320.jpeg?v=1633354738&w=929&h=523',
@@ -143,4 +143,5 @@ def sp():
 
 
 if __name__ == "__main__":
+    from imports import TextSelector,NumberSelector
     app.run(debug=True)
