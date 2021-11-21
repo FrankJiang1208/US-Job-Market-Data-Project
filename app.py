@@ -3,16 +3,8 @@ from flask import request
 import pandas as pd
 import numpy as np
 import pickle
-from nltk.corpus import stopwords
-from sklearn.base import BaseEstimator, TransformerMixin
-from sklearn.model_selection import train_test_split
-from sklearn.pipeline import Pipeline
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.preprocessing import StandardScaler
-from sklearn.pipeline import FeatureUnion
+from sklearn.model_selection import GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
-from nltk.corpus import stopwords
-from importing import TextSelector,NumberSelector
 import joblib
 
 def salary_category(bin):
@@ -44,30 +36,8 @@ def skill_check(dict):
             skill_dict[i]=1
     return skill_dict
 
-model = joblib.load('salary_predict_model.h5')
+model = joblib.load('salary_predict_model.pkl')
 
-
-class TextSelector(BaseEstimator, TransformerMixin):
-
-        def __init__(self, key):
-            self.key = key
-
-        def fit(self, X, y=None):
-            return self
-
-        def transform(self, X):
-            return X[self.key]
-    
-class NumberSelector(BaseEstimator, TransformerMixin):
-    
-        def __init__(self, key):
-            self.key = key
-
-        def fit(self, X, y=None):
-            return self
-
-        def transform(self, X):
-            return X[[self.key]]
 app = Flask(__name__)
 
 @app.route("/")
@@ -106,15 +76,16 @@ def sp():
     if request.method == 'POST':
         names = request.form.to_dict()
         skill=skill_check(names)
-        input=[names["titles"],names["size"],names["ownership"],names["industry"],names["sector"],names["state"],names["age"]]
+        input=[names["size"],names["industry"],names["state"],names["age"]]
         input=input+list(skill.values())
         input=input+[names["titles"],names["seniority"]]
-        df=pd.DataFrame([input],columns=['Job Title', 'Size', 'Type of ownership', 'Industry', 'Sector', 'State',
+        df=pd.DataFrame([input],columns=[ 'Size',  'Industry', 'State',
        'Age', 'Python', 'R', 'SQL', 'AWS', 'Excel', 'GCP', 'Azure', 'Spark',
        'PyTorch', 'TensorFlow', 'Tableau', 'Keras', 'NoSQL', 'Scikit-Learn',
        'Machine_Learning', 'Hadoop', 'Scala', 'Data_Brick', 'Job',
        'Seniority'])
-        pred=salary_category( model.predict(df)[0])
+        df=pd.get_dummies(df)
+        pred=salary_category( model.predict(df))
         return render_template('salary_prediction_sj.html',pred=pred)
     else:
         return render_template('salary_prediction_sj.html')
