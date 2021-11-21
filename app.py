@@ -36,7 +36,7 @@ def skill_check(dict):
             skill_dict[i]=1
     return skill_dict
 
-model = joblib.load('salary_predict_model.pkl')
+model = joblib.load('salary_predict_model1.pkl')
 
 app = Flask(__name__)
 
