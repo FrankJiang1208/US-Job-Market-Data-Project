@@ -3,8 +3,6 @@ from flask import request
 import pandas as pd
 import numpy as np
 import pickle
-from sklearn.model_selection import GridSearchCV
-from sklearn.ensemble import RandomForestClassifier
 import joblib
 
 def salary_category(bin):
