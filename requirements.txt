@@ -6,4 +6,3 @@ pandas
 nltk
 numpy
 matplotlib
-sklearn
