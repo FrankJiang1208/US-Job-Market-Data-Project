@@ -1,10 +1,10 @@
-Flask>=1,<2
+Flask
 markupsafe==2.0.1
 PyJWT
 boto3
 nltk
 matplotlib
-numpy>=1.9.2
-scikit-learn>=0.18
-matplotlib>=1.4.3
-pandas>=0.19
+numpy
+scikit-learn
+matplotlib
+pandas
